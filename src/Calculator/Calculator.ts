@@ -11,6 +11,11 @@ export class Calculator{
     backspace = () => calcText.value = calcText.value.substring(0, calcText.value.length - 1);
     
     evaluate = () => {
+        if(calcText.value === ""){
+            alert("Please enter some expression!!!");
+            return;
+        }
+
         try{
             calcText.value = eval(calcText.value);
         } catch(error) {
@@ -42,6 +47,7 @@ export class Calculator{
 }
 
 export type calculatorFunctionality = {
-    id: string,
-    method: Function
+    selector: string,
+    method: Function,
+    param?: Function
 };

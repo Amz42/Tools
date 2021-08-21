@@ -15,26 +15,40 @@ inputButtons.forEach(btn => {
     btn.addEventListener('click', () => calculator.insert(btn.value));
 });
 
-const calculatorEvaluateBtn = document.querySelector("#calc-evaluate-btn") as HTMLInputElement;
-calculatorEvaluateBtn.addEventListener('click', () => calculator.evaluate());
+const calculatorFunctions: calculatorFunctionality[] = [
+    {
+        selector: "#calc-evaluate-btn",
+        method: calculator.evaluate
+    },{
+        selector: "#calc-clear-btn",
+        method: calculator.clear
+    },{
+        selector: "#calc-bksp-btn",
+        method: calculator.backspace
+    },{
+        selector: "#calc-log-btn",
+        method: calculator.math,
+        param: Math.log10
+    },{
+        selector: "#calc-sqrt-btn",
+        method: calculator.math,
+        param: Math.sqrt
+    },{
+        selector: "#calc-sin-btn",
+        method: calculator.math,
+        param: Math.sin
+    },{
+        selector: "#calc-cos-btn",
+        method: calculator.math,
+        param: Math.cos
+    },{
+        selector: "#calc-tan-btn",
+        method: calculator.math,
+        param: Math.tan
+    }
+];
 
-const calculatorClearBtn = document.querySelector("#calc-clear-btn") as HTMLInputElement;
-calculatorClearBtn.addEventListener('click', () => calculator.clear());
-
-const calculatorBackspaceBtn = document.querySelector("#calc-bksp-btn") as HTMLInputElement;
-calculatorBackspaceBtn.addEventListener('click', () => calculator.backspace());
-
-const calculatorLogBtn = document.querySelector("#calc-log-btn") as HTMLInputElement;
-calculatorLogBtn.addEventListener('click', () => calculator.math(Math.log10));
-
-const calculatorSqrtBtn = document.querySelector("#calc-sqrt-btn") as HTMLInputElement;
-calculatorSqrtBtn.addEventListener('click', () => calculator.math(Math.sqrt));
-
-const calculatorSinBtn = document.querySelector("#calc-sin-btn") as HTMLInputElement;
-calculatorSinBtn.addEventListener('click', () => calculator.math(Math.sin));
-
-const calculatorCosBtn = document.querySelector("#calc-cos-btn") as HTMLInputElement;
-calculatorCosBtn.addEventListener('click', () => calculator.math(Math.cos));
-
-const calculatorTanBtn = document.querySelector("#calc-tan-btn") as HTMLInputElement;
-calculatorTanBtn.addEventListener('click', () => calculator.math(Math.tan));
+calculatorFunctions.forEach(item => {
+    const btn = document.querySelector(item.selector) as HTMLInputElement;
+    btn.addEventListener('click', () => item.method(item.param));
+});

@@ -6,6 +6,10 @@ export class Calculator {
         this.clear = () => calcText.value = "";
         this.backspace = () => calcText.value = calcText.value.substring(0, calcText.value.length - 1);
         this.evaluate = () => {
+            if (calcText.value === "") {
+                alert("Please enter some expression!!!");
+                return;
+            }
             try {
                 calcText.value = eval(calcText.value);
             }
