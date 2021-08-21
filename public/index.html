@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Plaster&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Taviraj&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+        
+        <title> Tools </title>
+    </head>
+  
+    <body>
+
+        <p id="tools" align="center">TOOLS</p>
+        <hr>
+        
+        <div class="container-fluid">
+            <!--ROW 1-->
+            <div class="row">
+                
+                <!--DIGITAL CLOCK //////////////////////////////////////////////////////////////////////////////////////////////-->
+                <div class="col-lg-6">
+                    <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>DIGITAL  CLOCK</b></h1>
+                    <h2 id="watch" align="center">00:00:00</h2>
+                    <h3 id="date" align="center"></h3>
+                </div>
+
+                <!--STOPWATCH //////////////////////////////////////////////////////////////////////////////////////////////////-->
+                <div class="col-lg-6" id="stopwatch">
+                    <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>STOPWATCH</b></h1>
+                    <h2 id="timer" align="center">00:00</h2>
+                    <div id="lap-info" align="center"></div>
+                    <div id="timer-buttons" align="center">
+                        <input type="button" class="btn btn-success" id="start-timer" onclick="start_pause()" value="START"/>
+                        <button type="button" class="btn btn-warning" id="lap-timer" onclick="lapTimer()">LAP</button>
+                        <button type="button" class="btn btn-primary" id="reset-timer" onclick="resetTimer()">RESET</button>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!--ROW 2-->
+            <div class="row">
+                <div class="col-lg-6" align="center">
+                    <!--CALCULATOR ////////////////////////////////////////////////////////////////////////////////////////////////-->
+                    <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>CALCULATOR</b></h1>
+                    <input type="text" name="calculator" align="center" id="calc_text">
+                    <table id="calc_keys_table" border="0">
+                            <tr>
+                                <td><input class="but" id="calc-clear-btn" type="button" value="C"></td>
+                                <td><input class="but" id="calc-bksp-btn" type="button" value="b"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="÷"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="*"></td>
+                                <td><input class="but" id="calc-log-btn" type="button" value="log10"></td>
+                            </tr>
+                            <tr>
+                                <td><input class="but calc-insert-btn" type="button" value="7"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="8"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="9"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="+"></td>
+                                <td><input class="but" id="calc-sqrt-btn" type="button" value="√"></td>
+                            </tr>
+                            <tr>
+                                <td><input class="but calc-insert-btn" type="button" value="4"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="5"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="6"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="-"></td>
+                                <td><input class="but" id="calc-sin-btn" type="button" value="sin"></td>
+                            </tr>
+                            <tr>
+                                <td><input class="but calc-insert-btn" type="button" value="1"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="2"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="3"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="%"></td>
+                                <td><input class="but" id="calc-cos-btn" type="button" value="cos"></td>
+                            </tr>
+                            <tr>
+                                <td><input class="but calc-insert-btn" type="button" value="0"></td>
+                                <td><input class="but calc-insert-btn" type="button" value="."></td>
+                                <td colspan="2"><input class="but" id="calc-evaluate-btn" type="button" value="="></td>
+                                <td><input class="but" id="calc-tan-btn" type="button" value="tan"></td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="col-lg-6" id="unit-converter">
+                    <!--UNIT CONVERTER ////////////////////////////////////////////////////////////////////////////////////////////-->
+                    <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>UNIT CONVERTER</b></h1>
+                    <div align="center">	
+                        <select align="center" class="uc-select" id="uc-property">
+                            <option class="uc">Select a property.........</option>
+                            <option value="area" class="uc">Area</option>
+                            <option value="frequency" class="uc">Frequency</option>
+                            <option value="length" class="uc">Length</option>
+                            <option value="mass" class="uc">Mass</option>
+                            <option value="speed" class="uc">Speed</option>
+                            <option value="temperature" class="uc">Temperature</option>
+                        </select>
+                    </div>
+                    <div align="center">
+                        <select id="unit-1"><option>From</option></select>
+                        <select id="unit-2"><option>To</option></select>
+                    </div>
+                    <div align="center">
+                        <input type="number" name="input-box" id="input_box" placeholder="Input Here.....">
+                        <input type="number" name="output-box" id="output_box" placeholder="Output....." disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+        <footer>
+            <div id="authors">
+                <p align="center">A CREATION OF <a href="https://amanguptablog.netlify.com/" style="font-weight: bold;" target="_blank">AMAN</a> & <a href="https://skblog.netlify.com/" style="font-weight: bold;" target="_blank">SHAKSHAM</a></p>
+            </div>
+        </footer>
+    </body>
+
+    <script type = "module" src="./index.js"></script>
+</html>
