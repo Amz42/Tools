@@ -10,7 +10,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.1.1.js"></script> -->
         
         <link rel="stylesheet" type="text/css" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
@@ -45,9 +45,9 @@
                     <h2 id="timer" align="center">00:00</h2>
                     <div id="lap-info" align="center"></div>
                     <div id="timer-buttons" align="center">
-                        <input type="button" class="btn btn-success" id="start-timer" onclick="start_pause()" value="START"/>
-                        <button type="button" class="btn btn-warning" id="lap-timer" onclick="lapTimer()">LAP</button>
-                        <button type="button" class="btn btn-primary" id="reset-timer" onclick="resetTimer()">RESET</button>
+                        <input type="button" class="btn btn-success" id="start-timer" value="START"/>
+                        <input type="button" class="btn btn-warning" id="lap-timer" value="LAP"/>
+                        <input type="button" class="btn btn-primary" id="reset-timer" value="RESET"/>
                     </div>
                 </div>
 
@@ -55,8 +55,8 @@
             
             <!--ROW 2-->
             <div class="row">
+                <!--CALCULATOR ////////////////////////////////////////////////////////////////////////////////////////////////-->
                 <div class="col-lg-6" align="center">
-                    <!--CALCULATOR ////////////////////////////////////////////////////////////////////////////////////////////////-->
                     <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>CALCULATOR</b></h1>
                     <input type="text" name="calculator" align="center" id="calc_text">
                     <table id="calc_keys_table" border="0">
@@ -96,18 +96,13 @@
                             </tr>
                     </table>
                 </div>
+
+                <!--UNIT CONVERTER ////////////////////////////////////////////////////////////////////////////////////////////-->
                 <div class="col-lg-6" id="unit-converter">
-                    <!--UNIT CONVERTER ////////////////////////////////////////////////////////////////////////////////////////////-->
                     <h1 align="center" style="color:#012333; font-family: 'Cinzel Decorative', cursive;"><b>UNIT CONVERTER</b></h1>
                     <div align="center">	
                         <select align="center" class="uc-select" id="uc-property">
                             <option class="uc">Select a property.........</option>
-                            <option value="area" class="uc">Area</option>
-                            <option value="frequency" class="uc">Frequency</option>
-                            <option value="length" class="uc">Length</option>
-                            <option value="mass" class="uc">Mass</option>
-                            <option value="speed" class="uc">Speed</option>
-                            <option value="temperature" class="uc">Temperature</option>
                         </select>
                     </div>
                     <div align="center">
@@ -116,19 +111,18 @@
                     </div>
                     <div align="center">
                         <input type="number" name="input-box" id="input_box" placeholder="Input Here.....">
-                        <input type="number" name="output-box" id="output_box" placeholder="Output....." disabled>
+                        <input type="text" name="output-box" id="output_box" placeholder="Output....." disabled>
                     </div>
                 </div>
+                
             </div>
         </div>
 
         <br><br><br>
         <footer>
-            <div id="authors">
-                <p align="center">A CREATION OF <a href="https://amanguptablog.netlify.com/" style="font-weight: bold;" target="_blank">AMAN</a> & <a href="https://skblog.netlify.com/" style="font-weight: bold;" target="_blank">SHAKSHAM</a></p>
-            </div>
+            <div id="authors"> <p align="center">&nbsp;</p> </div>
         </footer>
     </body>
 
-    <script type = "module" src="./index.js"></script>
+    <script type = "module" src = "./index.js"></script>
 </html>

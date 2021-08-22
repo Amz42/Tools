@@ -22,11 +22,10 @@ export class Calculator {
             try {
                 let val = parseFloat(calcText.value);
                 if (myFunction.name === "tan" && val === 90) {
-                    calcText.value = "infinite";
+                    calcText.value = "Infinity";
                     return;
                 }
                 if (["sin", "tan", "cos"].indexOf(myFunction.name) !== -1) {
-                    console.log(myFunction.name, "dtr applied");
                     val = this.degreeToRadian(val);
                 }
                 calcText.value = myFunction(val).toString();
