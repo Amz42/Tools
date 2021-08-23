@@ -1,38 +1,25 @@
-const calcText = document.querySelector("#calc_text");
+export const calcText = document.querySelector("#calc_text");
 export class Calculator {
     constructor() {
         this.degreeToRadian = (degree) => (degree * Math.PI) / 180;
-        this.insert = (value) => calcText.value += value;
-        this.clear = () => calcText.value = "";
-        this.backspace = () => calcText.value = calcText.value.substring(0, calcText.value.length - 1);
-        this.evaluate = () => {
-            if (calcText.value === "") {
-                alert("Please enter some expression!!!");
-                return;
-            }
-            try {
-                calcText.value = eval(calcText.value);
-            }
-            catch (error) {
-                alert(`Error: ${error}`);
-            }
+        this.insert = (inputBoxValue, value) => inputBoxValue + value;
+        this.clear = () => "";
+        this.backspace = (inputBoxValue) => inputBoxValue.substring(0, inputBoxValue.length - 1);
+        this.evaluate = (inputBoxValue) => {
+            if (inputBoxValue === "")
+                throw new Error("Please enter some expression!!!");
+            let result = eval(inputBoxValue);
+            if (typeof (result) === "number")
+                result = result.toString();
+            return result;
         };
-        this.math = (myFunction) => {
-            this.evaluate();
-            try {
-                let val = parseFloat(calcText.value);
-                if (myFunction.name === "tan" && val === 90) {
-                    calcText.value = "Infinity";
-                    return;
-                }
-                if (["sin", "tan", "cos"].indexOf(myFunction.name) !== -1) {
-                    val = this.degreeToRadian(val);
-                }
-                calcText.value = myFunction(val).toString();
-            }
-            catch (error) {
-                alert(`Error: ${error}`);
-            }
+        this.math = (inputBoxValue, myFunction) => {
+            let val = parseFloat(this.evaluate(inputBoxValue));
+            if (myFunction.name === "tan" && val === 90)
+                return "Infinity";
+            if (["sin", "tan", "cos"].indexOf(myFunction.name) !== -1)
+                val = this.degreeToRadian(val);
+            return myFunction(val).toString();
         };
     }
     ;

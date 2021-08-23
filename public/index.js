@@ -1,5 +1,5 @@
 import { digitalClock } from './Apps/DigitalClock.js';
-import { Calculator } from './Apps/Calculator.js';
+import { Calculator, calcText } from './Apps/Calculator.js';
 import { resetTimer, lapTimer, startOrPause, startTimerBtn, lapTimerBtn, resetTimerBtn } from './Apps/Stopwatch.js';
 import { convert, inputBox, injectUnits, quantities, quantityTypeSelector, unit1Selector, unit2Selector } from './Apps/UnitConverter.js';
 digitalClock();
@@ -7,7 +7,14 @@ setInterval(digitalClock, 1000);
 const calculator = new Calculator();
 const inputButtons = document.querySelectorAll(".calc-insert-btn");
 inputButtons.forEach(btn => {
-    btn.addEventListener('click', () => calculator.insert(btn.value));
+    btn.addEventListener('click', () => {
+        try {
+            calcText.value = calculator.insert(calcText.value, btn.value);
+        }
+        catch (error) {
+            alert(`Error: ${error}`);
+        }
+    });
 });
 const calculatorFunctions = [
     {
@@ -43,7 +50,14 @@ const calculatorFunctions = [
 ];
 calculatorFunctions.forEach(item => {
     const btn = document.querySelector(item.selector);
-    btn.addEventListener('click', () => item.method(item.param));
+    btn.addEventListener('click', () => {
+        try {
+            calcText.value = item.method(calcText.value, item.param);
+        }
+        catch (error) {
+            alert(`${error}`);
+        }
+    });
 });
 startTimerBtn.addEventListener('click', () => startOrPause());
 lapTimerBtn.addEventListener('click', () => lapTimer());

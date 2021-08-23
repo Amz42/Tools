@@ -1,5 +1,5 @@
 import { digitalClock } from './Apps/DigitalClock.js';
-import { Calculator,calculatorFunctionality } from './Apps/Calculator.js';
+import { Calculator,calculatorFunctionality, calcText } from './Apps/Calculator.js';
 import {
     resetTimer, lapTimer, startOrPause,
     startTimerBtn, lapTimerBtn, resetTimerBtn
@@ -20,7 +20,13 @@ const calculator = new Calculator();
 
 const inputButtons = document.querySelectorAll(".calc-insert-btn") as unknown as HTMLInputElement[];
 inputButtons.forEach(btn => {
-    btn.addEventListener('click', () => calculator.insert(btn.value));
+    btn.addEventListener('click', () => {
+        try{
+            calcText.value = calculator.insert(calcText.value, btn.value);
+        }catch(error){
+            alert(`Error: ${error}`);
+        }
+    });
 });
 
 const calculatorFunctions: calculatorFunctionality[] = [
@@ -58,7 +64,13 @@ const calculatorFunctions: calculatorFunctionality[] = [
 
 calculatorFunctions.forEach(item => {
     const btn = document.querySelector(item.selector) as HTMLInputElement;
-    btn.addEventListener('click', () => item.method(item.param));
+    btn.addEventListener('click', () => {
+        try{
+            calcText.value = item.method(calcText.value, item.param);
+        }catch(error){
+            alert(`${error}`);
+        }
+    });
 });
 
 
